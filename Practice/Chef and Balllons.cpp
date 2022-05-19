@@ -22,10 +22,7 @@ int main(){
             cout<<3*c+2*(k-c)-1<<endl;
         }
         else if(k>d && k<=e){
-            cout<<d+e+k<<endl;
+            cout<<c+d+k<<endl;
         }
-        else if(k==e){
-	        cout<<r+g+b;
-	    }
     }
 }
