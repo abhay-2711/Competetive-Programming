@@ -3,13 +3,15 @@ using namespace std;
 #define lint long long int
 
 int highestPowerof2(lint k){
-
-    lint res = 0;
-    for (lint i=k;i>=1;i--){
-        if ((i & (i-1)) == 0){
-            res = i;
-            break;
-        }
+    lint res;
+    if(k==1){    
+        res = pow(2,0);
+    }
+    else if(k==0){
+        res=0;
+    }
+    else{
+        res=pow(2,int(log2(k)));
     }
     return res;
 }
@@ -21,38 +23,32 @@ int main(){
         lint n;
         cin>>n;
         lint arr[n];
-        lint mn=INT_MAX;
-        lint r=n;
         lint count = 0;
-
+        lint mx=INT_MIN;
+        
         for(lint i=0;i<n;i++){
             cin>>arr[i];
-            if(arr[i]==0){
-                    r--;
-                    }
-                }
+            mx=max(mx,arr[i]);
+        }
 
-        while(r){
-            
-            for(lint i=0;i<r;i++){
-                mn=min(mn,arr[i]);
-            }
-            lint p = highestPowerof2(mn);
-            for(lint i=0;i<r;i++){
+        while(mx){
+        
+        lint p = highestPowerof2(mx);
+        bool check=0;
+        for(lint i=0;i<n;i++){
+            if(arr[i]>=p){
                 arr[i]=arr[i]-p;
+                check=1;
             }
-            for(lint i=0;i<r;i++){
-                if(arr[i]==0){
-                    r--;
-                }
-            }
-
-            cout<<mn<<endl;
+        }
+        if(check==1){
             count++;
         }
-        cout<<count<<endl;
+        mx=INT_MIN;
+        for(lint i=0;i<n;i++){
+            mx=max(mx,arr[i]);
+        }
+        }
+cout<<count<<endl;
     }
-
-
-        
-    
+}
