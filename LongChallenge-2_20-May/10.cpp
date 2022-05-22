@@ -19,28 +19,24 @@ int main(){
    for(lint i=0;i<m;i++){
     str[i]="";
    }
-
+lint c=0;
    for(lint i=0;i<n;i++){
       for(lint j=i;j<n;j++){
          for(lint k=i;k<=j;k++){
-            if(i==j && i>0 && j>0){
-            str[i+j+1]+=to_string(arr[k]);
-            }
-            else{
-            str[i+j]+=to_string(arr[k]);
-            }
-         }
+            str[c]+=to_string(arr[k]);
+        }
+        c++;
       }
    }
 
    for(lint j=0;j<m;j++){
-         lint l = str[j].length();
-         for(lint i=0;i<l;i++){
-            if(str[j].at(i) == l){
-               count++;
-            }
-         }
-        cout<<str[j]<<endl;
+         lint l = int(str[j].length());
+        //  for(lint i=0;i<l;i++){
+        //     if(int(str[j].at(i)) == l){
+        //        count++;
+        //     }
+        //  }
+         cout<<str[j]<<" "<<l<<" "<<endl;
       }
     //   cout<<count<<endl;
    }

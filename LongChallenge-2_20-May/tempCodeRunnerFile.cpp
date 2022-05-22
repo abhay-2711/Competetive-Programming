@@ -1,3 +1,3 @@
-for(lint j=0;j<m;j++){
-        //     cout<<str[j]<<endl;
-        // }
+	cout << arr[i] << " ";
+		cout << arr[e] << endl;
+        k=arr[i];

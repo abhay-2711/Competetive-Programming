@@ -2,75 +2,99 @@
 using namespace std;
 #define lint long long int
 
-void printSubArrays(lint *arr, lint s, lint e, lint n){
-    lint count=0;
-    lint m=n*(n+1)/2;
-    lint a[m];
-    string str[m]={0};
-
-    for(lint j=0;j<m;j++){
-        lint l = str[j].length();
-
-        for(lint i=0;i<=j;i++){
-            if(str[j].at(i) == l){
-                count++;
-            }
-        }
-    }
-
-	if (e == n){
+void printSubArrays(vector<int> arr, int s, int e)
+{
+	if (e == arr.size()){
 		return;
     }
 	else if (s > e){
-		printSubArrays(arr, 0, e + 1, n);
+		printSubArrays(arr, 0, e + 1);
     }
 	else {
         lint k;
-		for (lint i = s; i <= e; i++){
-			// a[i]=arr[i];
-            k=arr[i];
-            // while(a[i]!=0){
-            //     if(a[i]%10==(e-s+1)){
-            //     count++;
-            //     a[i]=a[i]/10;
-            //     }
-            // }
-
-            cout<<k;
+        int i;
+		for (i = s; i <= e; i++){
+			cout << arr[i] << "";
         }
-
-
-
-        // for(lint j=0;j<m;j++){
-        //     if(str[j] == to_string(0)){
-        //     str[j]=to_string(k);
-        //     cout<<str[j];
-        //     }
-        //     cout<<endl;
-        //     break;
-        // }
+        cout<<endl;
         
-        // for(lint j=0;j<m;j++){
-        //     cout<<str[j]<<endl;
-        // }
-    // cout<<count<<endl;
-                // cout<<e-s+1<<endl;
-		printSubArrays(arr, s + 1, e, n);
+		printSubArrays(arr, s + 1, e);
 	}
 	return;
 }
 
-int main(){
+// int isSubstring(string s1, string s2)
+// {
+//     lint M = s1.length();
+//     lint N = s2.length();
+
+//     for (lint i = 0; i <= N - M; i++)
+//     {
+//         lint j;
+//         for (j = 0; j < M; j++)
+//         {
+//             if (s2[i + j] != s1[j])
+//             {
+//                 break;
+//             }
+//         }
+//         if (j == M)
+//         {
+//             return i;
+//         }
+//     }
+//     return -1;
+// }
+
+int main()
+{
     int T;
     cin>>T;
-    while(T--){
-    lint n;
-    cin>>n;
-    lint arr[n];
-    for(lint j=0;j<n;j++){
-        cin>>arr[j];
-    } 
-	printSubArrays(arr, 0, 0, n);
+    while (T--)
+    {
+        vector<int> arr;
+        lint n;
+        cin>>n;
+        for(lint i=0;i<n;++i){
+            int x;
+            cin>>x;
+            arr.push_back(x);
+        }
+	    printSubArrays(arr, 0, 0);
+        
+        lint m = n * (n + 1) / 2;
+        string s1[m];
+        for (lint i = 0; i < m; i++)
+        {
+            s1[i] = "";
+        }
+        // lint c = 0;
+        // for (lint i = 0; i < n; i++)
+        // {
+        //     for (lint j = i; j < n; j++)
+        //     {
+        //         for (lint k = i; k <= j; k++)
+        //         {
+        //             s1[c] += to_string(arr[k]);
+        //         }
+        //         c++;
+        //     }
+        // }
+        // lint count = 0;
+        // for (lint j = 0; j < m; j++)
+        // {
+        //     lint l = s1[j].length();
+        //     string s2 = to_string(l);
+        //     lint res = isSubstring(s2,s1[j]);
+        //     if (res == -1){
+        //     continue;
+        //     }
+        //     else{
+        //     count++;
+        //     }
+
+        // }
+        // cout << count << endl;
     }
-	return 0;
+    return 0;
 }
