@@ -13,12 +13,18 @@ int main(){
         int mx=INT_MIN;
         int l=s.length();
         // cout<<l<<endl;
-        int c=0;
+                int c=0;
                 for(int i=0;i<l;i++){
-                    if(int(s.at(i)-48)==(((l+2)/2)-1)){
+                    if(s.at(i)==' '){
                         c++;
                     }
                 }
+                int n=c+1;
+                // for(int i=0;i<l;i++){
+                //     if(int(s.at(i)-48)==(((l+2)/2)-1)){
+                //         c++;
+                //     }
+                // }
                 // cout<<c<<endl;
             if((c-1)<((l+2)/2)-1){
                 for(int i=0;i<l;i++){
