@@ -5,6 +5,7 @@
         "istream": "cpp",
         "initializer_list": "cpp",
         "valarray": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "random": "cpp"
     }
 }
