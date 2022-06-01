@@ -32,7 +32,7 @@ int main(){
             }
         // cout<<s<<endl;
         if((c-1)<((l+2)/2)-1){
-        cout<<mx<<endl;
+        cout<<<<endl;
         }
     }
 }
