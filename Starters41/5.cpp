@@ -6,7 +6,7 @@ int main(){
     while(T--){
     lint n;
     cin>>n;
-    lint k; cin>>k;
+    bool k; cin>>k;
     int arr[n][n];
     lint i;
     lint j;
@@ -15,20 +15,29 @@ int main(){
             arr[i-1][j-1]=i+n*(j-1);
         }
     }
-    int rowStart=0, colStart=0, rowEnd=n-1, colEnd=n-1;
     i=1;
     j=1;
     lint sum1=0;
-    while(i<=n && j<=n){
+    while((i<=n) && (j<=n)){
         sum1+=i+n*(j-1);
+        if((i+j)%2==0){
         j++;
-        i--;
+        }
+        else{
+        i++;
+        }
     }
+    i=1;
+    j=1;
     lint sum2=0;
-    while(i<=n && j<=n){
+    while((i<=n) && (j<=n)){
         sum2+=i+n*(j-1);
-        i--;
+        if((i+j)%2==0){
+        i++;
+        }
+        else{
         j++;
+        }
     }
     if((k==0) && ((sum1%2==0) || (sum2%2==0))){
         cout<<"yes"<<endl;
