@@ -1,0 +1,2 @@
+aptr++;
+    // cout<<aptr<<endl;

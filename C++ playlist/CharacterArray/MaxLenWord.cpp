@@ -9,15 +9,15 @@ int main(){
     cin.getline(c,n);
 int i=0;
 int currLength=0, maxLength=0;
-// int st=0, maxst=0;
+int st=0, maxst=0;
     while(1){
         if(c[i]==' ' || c[i]=='\0'){
             if(currLength>maxLength){
                 maxLength=currLength;
-                // maxst=st;
+                maxst=st;
             }
             currLength=0;
-            // st=i+1;
+            st=i+1;
         }
         else{
             currLength++;
@@ -28,7 +28,7 @@ int currLength=0, maxLength=0;
         i++;
     }
     cout<<maxLength<<endl;
-    // for(int i=0;i<maxLength;i++){
-    //     cout<<c[i+maxst];
-    // }
+    for(int i=0;i<maxLength;i++){
+        cout<<c[i+maxst];
+    }
 }
