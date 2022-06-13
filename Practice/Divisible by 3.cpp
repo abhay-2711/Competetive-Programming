@@ -15,6 +15,7 @@ int main(){
             x=abs(x-y);
             if((abs(x)%3)==0){
                 check=1;
+                count++;
                 break;
             }
             a=1;
@@ -23,11 +24,11 @@ int main(){
             y=abs(x-y);
             if((abs(y)%3)==0){
                 check=1;
+                count++;
                 break;
             }
             a=0;
             }
-            count++;
         }
         if(check==1){
             cout<<count<<endl;
