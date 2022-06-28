@@ -1,3 +1,5 @@
+//Floyd's Algorithm
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -42,26 +44,21 @@ void display(node* head){
     cout<<"NULL"<<endl;
 }
 
-node* reversek(node* &head,int k){
-    node* prevptr=NULL;
-    node* currptr=head;
-    node* nextptr;
-    int count=0;
-    while(currptr!=NULL && count<k){
-        nextptr=currptr->next;
-        currptr->next=prevptr;
-
-        prevptr=currptr;
-        currptr=nextptr;
-        count++;
+void evenAfterOdd(node* &head){
+    node* odd=head;
+    node* even=head->next;
+    node* evenStart=even;
+    while(odd->next!=NULL && even->next!=NULL){
+        odd->next=even->next;
+        odd=odd->next;
+        even->next=odd->next;
+        even=even->next;
     }
-    if(nextptr!=NULL){
-    head->next=reversek(nextptr,k);
+    odd->next=evenStart;
+    if(odd->next!=NULL){
+        even->next=NULL;
     }
-    return prevptr;
 }
-
-
 
 int main(){
 
@@ -72,8 +69,8 @@ int main(){
     insertAtTail(head,4);
     insertAtTail(head,5);
     insertAtTail(head,6);
+    
     display(head);
-    int k=2;
-    node* newhead=reversek(head,k);
-    display(newhead);
+    evenAfterOdd(head);
+    display(head);
 }
