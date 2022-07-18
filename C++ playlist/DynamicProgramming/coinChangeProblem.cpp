@@ -54,10 +54,10 @@ signed main(){
     rep(i,1,n+1){
         rep(j,0,x+1){
             if(j-a[i-1]>=0){
-                dp[j]+=[j-a[i-1]];
+                dp[i][j]+=dp[i][j-a[i-1]];
             }
             dp[i][j]+=dp[i-1][j];
         }
     }
-    cout<<dp[x]<<endl;
+    cout<<dp[n][x]<<endl;
 }
