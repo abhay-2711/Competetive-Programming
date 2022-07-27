@@ -2,7 +2,7 @@
 using namespace std;
 
 int n,m,k;
-vector<int> a,b;
+vector<int> a,b;  
 int dp[2005][2005][7];
 
 int solve(int i,int j, int k){
