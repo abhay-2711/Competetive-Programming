@@ -1,7 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
+#define int long long
+const int N=1e5+2, MOD=1e9+7;
 
-const int N=1e5+2;
 int a[N],tree[4*N];
 
 void build(int node,int st,int en){
@@ -18,7 +19,7 @@ void build(int node,int st,int en){
 
 int query(int node,int st,int en,int l,int r){
     if(st>r || en<l){
-        return INT_MIN;
+        return -MOD;
     }
     if(l<=st && en<=r){
         return tree[node];
@@ -47,27 +48,43 @@ void update(int node,int st,int en,int idx,int val){
 }
 
 
-int main(){
-    int n;cin>>n;
+signed main(){
+    int n,m;
+    cin>>n>>m;
+    
     for(int i=0;i<n;i++){
         cin>>a[i];
     }
     build(1,0,n-1);
-    while(1){
-        int type;cin>>type;
-        if(type==-1){
-            break;
-        }
+    while(m--){
+        int type;
+        cin>>type;
         if(type==1){
-            int l,r;cin>>l>>r;
-            int ans=query(1,0,n-1,l,r);
-            cout<<ans<<endl;
-        }
-        else if(type==2){
             int idx,val;
             cin>>idx>>val;
             update(1,0,n-1,idx,val);
-            cout<<query(1,0,n-1,0,n-1)<<endl;
         }
+        else if(type==2){
+            int x;
+            cin>>x;
+            int lo=0,hi=n-1;
+            int ans=n;
+            while(lo<=hi){
+                int mid=(lo+hi)/2;
+                if(query(1,0,n-1,lo,mid)<x){
+                    lo=mid+1;
+                }
+                else{
+                    hi=mid-1;
+                    ans=min(ans,mid);
+                }
+            }
+            if(ans==n){
+                cout<<"-1"<<endl;
+            }
+            else{
+                cout<<ans<<endl;
+            }
+        }        
     }
 }
